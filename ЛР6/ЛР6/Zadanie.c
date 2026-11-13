@@ -63,10 +63,16 @@ int main() {
 	int d3, m3, y3, user_choice;
 
 	printf("Введите дату в формате ДД ММ ГГГГ (через пробел): ");
-	scanf("%d %d %d", &d3, &m3, &y3);
+	if (scanf("%d %d %d", &d3, &m3, &y3) != 3) {
+		printf("Ошибка: некорректный формат ввода даты!\n");
+		return 1;
+	}
 
 	printf("Что вычислить? (1 - до конца месяца, 2 - до конца года): ");
-	scanf("%d", &user_choice);
+	if (scanf("%d", &user_choice) != 1 || (user_choice != 1 && user_choice != 2)) {
+		printf("Ошибка: некорректный номер операции!\n");
+		return 1;
+	}
 
 	int days_left = z_3(d3, m3, y3, user_choice);
 
